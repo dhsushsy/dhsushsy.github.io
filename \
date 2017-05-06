@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div id="title">
+    Causes of {{category}} 
+</div>
+{% for cause in causes %}
+<div>
+
+  <a href="https://www.google.com/search?&tbm=isch&q={{ cause}}">{{ cause}}</a>
+</div>
+{% endfor %}
+{% endblock %}

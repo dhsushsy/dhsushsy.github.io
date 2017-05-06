@@ -1,0 +1,90 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Answers	dermdiag.py	/^class Answers:$/;"	c
+Causes	dermdiag.py	/^class Causes(Data):$/;"	c
+Data	dermdiag.py	/^class Data:$/;"	c
+DiagData	dermdiag.py	/^class DiagData:$/;"	c
+Diagnoses	dermdiag.py	/^class Diagnoses(Data):$/;"	c
+Differentials	dermdiag.py	/^class Differentials(Data):$/;"	c
+HOST	dermdiag.py	/^HOST = socket.gethostname()$/;"	v
+Table	dermdiag.py	/^class Table:$/;"	c
+__init__	dermdiag.py	/^    def __init__(self): $/;"	m	class:Causes
+__init__	dermdiag.py	/^    def __init__(self): $/;"	m	class:Diagnoses
+__init__	dermdiag.py	/^    def __init__(self): $/;"	m	class:Differentials
+__init__	dermdiag.py	/^    def __init__(self):$/;"	m	class:Answers
+__init__	dermdiag.py	/^    def __init__(self):$/;"	m	class:DiagData
+__init__	dermdiag.py	/^    def __init__(self,filename): self.load_csv(filename) $/;"	m	class:Table
+analyse_logs	server.py	/^def analyse_logs():$/;"	f
+app	server.py	/^app = Flask(__name__)$/;"	v
+base	dermdiag.py	/^base = os.path.dirname(os.path.realpath(__file__))+'\/'$/;"	v
+base	server.py	/^base = os.path.dirname(os.path.realpath(__file__))+'\/'$/;"	v
+canonical_capitalization	dermdiag.py	/^def canonical_capitalization(v):$/;"	f
+capitalization	dermdiag.py	/^    capitalization = {}$/;"	v	class:Data
+category_name	server.py	/^def category_name(name):$/;"	f
+clean_up	dermdiag.py	/^def clean_up():$/;"	f
+data	dermdiag.py	/^    data = {}$/;"	v	class:Table
+data_directory	dermdiag.py	/^    data_directory = '\/media\/sf_magnuslynch\/Files\/Valuable\/DermDiag\/'$/;"	v
+data_directory	dermdiag.py	/^    data_directory='\/data\/'$/;"	v
+diag2term	dermdiag.py	/^    diag2term = None$/;"	v	class:Causes
+diags	dermdiag.py	/^    diags = None$/;"	v	class:Differentials
+diagsearch	dermdiag.py	/^def diagsearch(v): return v['Diagnosis'] + ' ' + v['Search term']$/;"	f
+differentials	server.py	/^def differentials(name):$/;"	f
+do_google_searches	dermdiag.py	/^def do_google_searches():$/;"	f
+download_images	dermdiag.py	/^def download_images(json_file,directory):$/;"	f
+excel2csv	dermdiag.py	/^def excel2csv():$/;"	f
+gen_diffdiags	dermdiag.py	/^    def gen_diffdiags():$/;"	m	class:DiagData
+get	dermdiag.py	/^    def get(self,name):$/;"	m	class:Causes
+get	dermdiag.py	/^    def get(self,name):$/;"	m	class:Differentials
+get_all_search_terms	dermdiag.py	/^    def get_all_search_terms(self,mode='calc'):$/;"	m	class:DiagData
+get_content_image	dermdiag.py	/^def get_content_image(path):$/;"	f
+get_diags	server.py	/^def get_diags():$/;"	f
+get_images	dermdiag.py	/^def get_images(search):$/;"	f
+get_similar	dermdiag.py	/^    def get_similar(diag):$/;"	m	class:DiagData
+import_csv	dermdiag.py	/^def import_csv(filename,index):$/;"	f
+index	server.py	/^def index():$/;"	f
+iter_logs	server.py	/^def iter_logs():$/;"	f
+list	dermdiag.py	/^    def list(self): $/;"	m	class:Diagnoses
+list	dermdiag.py	/^    def list(self):$/;"	m	class:Causes
+list	dermdiag.py	/^    def list(self):$/;"	m	class:Differentials
+list_all_images	dermdiag.py	/^def list_all_images(mode='cache'):$/;"	f
+list_dirs	dermdiag.py	/^def list_dirs(directory):$/;"	f
+list_files	dermdiag.py	/^def list_files(directory):$/;"	f
+load	dermdiag.py	/^    def load(self):$/;"	m	class:Causes
+load	dermdiag.py	/^    def load(self):$/;"	m	class:Diagnoses
+load	dermdiag.py	/^    def load(self):$/;"	m	class:Differentials
+load_csv	dermdiag.py	/^    def load_csv(self,filename):$/;"	m	class:Table
+load_json	dermdiag.py	/^def load_json(filename): return json.loads(open(filename,'r').read())$/;"	f
+log_stats	server.py	/^def log_stats():$/;"	f
+login	server.py	/^def login():$/;"	f
+main	dermdiag.py	/^def main(): $/;"	f
+main	server.py	/^def main():$/;"	f
+make3columns	server.py	/^def make3columns(v):$/;"	f
+md5	dermdiag.py	/^def md5(s):$/;"	f
+quiz	server.py	/^def quiz():$/;"	f
+random_images	server.py	/^def random_images():$/;"	f
+request	dermdiag.py	/^def request(uri):$/;"	f
+retry_failed_downloads	dermdiag.py	/^def retry_failed_downloads():$/;"	f
+run	server.py	/^def run():$/;"	f
+save	dermdiag.py	/^    def save(self): save_json(self.data,data_directory+'answers.json') $/;"	m	class:Answers
+save_json	dermdiag.py	/^def save_json(obj,filename):$/;"	f
+search_boss	dermdiag.py	/^def search_boss(query,type='limitedweb'):$/;"	f
+search_google	dermdiag.py	/^def search_google(query,type='images'):$/;"	f
+send_css	server.py	/^def send_css(filename):$/;"	f
+send_fonts	server.py	/^def send_fonts(filename):$/;"	f
+send_img	server.py	/^def send_img(filename):$/;"	f
+send_img_content	server.py	/^def send_img_content(path):$/;"	f
+send_js	server.py	/^def send_js(filename):$/;"	f
+slice	dermdiag.py	/^    def slice(self,i):$/;"	m	class:Table
+spider_images	dermdiag.py	/^def spider_images():$/;"	f
+term2diag	dermdiag.py	/^    term2diag = None$/;"	v	class:Causes
+test	dermdiag.py	/^def test():$/;"	f
+test_diagdata	dermdiag.py	/^def test_diagdata():$/;"	f
+test_search	dermdiag.py	/^def test_search():$/;"	f
+text2url	dermdiag.py	/^def text2url(s):$/;"	f
+unanswered	dermdiag.py	/^    def unanswered(self,all_images):$/;"	m	class:Answers
+update	server.py	/^def update(): $/;"	f
+url2text	dermdiag.py	/^    def url2text(self,terms): $/;"	m	class:DiagData
