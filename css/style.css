@@ -1,0 +1,45 @@
+.chat-btn {
+    float: right;
+    margin-top: 10px;
+}
+
+.logout-btn {
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.login-error {
+    color: red;
+}
+
+.msg {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.msg-text {
+    font-size: 1em; 
+}
+
+.msg-info {
+    font-size: 0.6em;
+    color: #666666;
+}
+
+.msg-self {
+    background: #ccccff;
+}
+
+.msg-other {
+    background: #ccffcc;
+}
+
+#inputPassword {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.chat {
+}
