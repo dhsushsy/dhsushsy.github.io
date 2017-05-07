@@ -1,11 +1,28 @@
 /* globals */
 
+const salt = 'snHHdjsdawj^%££&*(mNddwww><sj22&&66%%£MMNNs**&)(^^bdssnsnns'
 var pubnub = null;
-var key = null;
+//var key = null;
+var keys = [];
 var channel = null;
 var _uuid = null;  
 var repeat_rate = 10000;
 var max_age = 60; //delete messages older than max_age seconds
+
+/*
+ * Must match between admin and page
+ */
+
+function gen_keys(str)
+{
+    keys = [];
+    for(var i=0;i<3;i++) {
+        var hash = sjcl.hash.sha256.hash(str+salt);
+        str = sjcl.codec.hex.fromBits(hash);
+        keys.push(str);
+    }
+}
+
 
 /*
  * @channel: Channel name
@@ -16,7 +33,6 @@ var max_age = 60; //delete messages older than max_age seconds
 
 function init_messaging(success)
 {
-    const salt = 'snHHdjsj22&&66%%£MMNNs**&)(^^bdssnsnns'
     if(_uuid==null) _uuid = PubNub.generateUUID(); //global
   
     //Create the pubnub object
@@ -25,8 +41,8 @@ function init_messaging(success)
     pubnub = new PubNub({
         publishKey: 'pub-c-b028f0d2-c487-4077-873d-205c1daf2962',
         subscribeKey: 'sub-c-07c3771c-2d90-11e7-9488-0619f8945a4f',
-        authKey: key,
-        cipherKey: key+salt,
+        authKey: keys[2],
+        cipherKey: keys[1], //key+salt,
         ssl: true,
         uuid: _uuid
     });
@@ -39,7 +55,7 @@ function init_messaging(success)
             message: "login"
         },
         channel: channel,
-        sendByPost: false, // true to send via post
+        sendByPost: true, // true to send via post
         storeInHistory: false, //override default storage options
     }, 
     function (status, response) {
@@ -61,7 +77,7 @@ function init_messaging(success)
             if(json.message=='login') return;
             var json_obj = JSON.parse(json);
             var text = null;
-            text = sjcl.decrypt(key,json);
+            text = sjcl.decrypt(keys[0],json);
 
             //Create the new message div
             const msg = $('div.msg-empty').clone();
@@ -90,11 +106,11 @@ function init_messaging(success)
 
 function send_msg(text)
 {
-    json = sjcl.encrypt(key,text); //returns json
+    json = sjcl.encrypt(keys[0],text); //returns json
     obj = JSON.parse(json);
     obj['uuid'] = _uuid;
     json = JSON.stringify(obj);
-    pubnub.publish({channel : channel,message : json,x : (json='')});
+    pubnub.publish({channel : channel,storeInHistory: false,sendByPost: true, message : json,x : (json='')});
     $('textarea#comment').val('');
     $('textarea#comment').focus();
 }
@@ -151,12 +167,14 @@ $(document).ready(function() {
     
     $('button.login-btn').click(function() {
         var user = $.trim($('#inputUser').val());
+        user = user.toLowerCase();
         var pass = $.trim($('#inputPassword').val());
         $('#inputUser').val('');
         $('#inputPassword').val('');
 
         channel = user; //global
-        key = pass; //global
+        //key = pass; //global
+        gen_keys(pass); //populate the global keys array
 
         init_messaging(function(success) {
             console.log('login: '+success);
