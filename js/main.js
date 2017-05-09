@@ -2,7 +2,6 @@
 
 const salt = 'snHHdjsdawj^%££&*(mNddwww><sj22&&66%%£MMNNs**&)(^^bdssnsnns'
 var pubnub = null;
-//var key = null;
 var keys = [];
 var channel = null;
 var _uuid = null;  
@@ -160,14 +159,15 @@ function repeat()
 $(document).ready(function() {
     
     $('textarea#comment').val('');
-    $('textarea#comment').focus();
     $('div.chat').hide(); 
     $('label.login-error').hide(); 
+    $('#inputPassword').focus();
 
     
     $('button.login-btn').click(function() {
-        var user = $.trim($('#inputUser').val());
-        user = user.toLowerCase();
+        //var user = $.trim($('#inputUser').val());
+        //user = user.toLowerCase();
+        var user = 'chat';
         var pass = $.trim($('#inputPassword').val());
         $('#inputUser').val('');
         $('#inputPassword').val('');
@@ -181,6 +181,7 @@ $(document).ready(function() {
             if(success) {
                 $('div.login').hide();
                 $('div.chat').show();
+                $('textarea#comment').focus();
                 setTimeout(repeat,repeat_rate);
 
             }
