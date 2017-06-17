@@ -135,7 +135,7 @@ function send_call()
 
 function send_msg(text)
 {
-    if(text.trim()=='call') {
+    if(text.trim().toLowerCase()=='callme') {
         send_call();
     }
 
