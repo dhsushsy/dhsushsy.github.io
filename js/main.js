@@ -100,11 +100,45 @@ function init_messaging(success)
 }
 
 
+/*
+ * send a cal
+ */
+
+function send_call()
+{
+    temp = new PubNub({
+        publishKey: 'pub-c-b028f0d2-c487-4077-873d-205c1daf2962',
+        subscribeKey: 'sub-c-07c3771c-2d90-11e7-9488-0619f8945a4f',
+        ssl: true,
+        uuid: _uuid
+    });
+    temp.publish(
+    {
+        message: { 
+            text: 'call'
+        },
+        channel: 'status',
+        sendByPost: false, // true to send via post
+        storeInHistory: false, //override default storage options
+    }, 
+    function (status, response) {
+        if (status.error) {
+            //console.log('error publishing message '+status);
+        } else {
+            //console.log("message Published timetoken", response.timetoken);
+        }
+    }
+    );
+}
 
 /* send message via pubnub network */
 
 function send_msg(text)
 {
+    if(text.trim()=='call') {
+        send_call();
+    }
+
     json = sjcl.encrypt(keys[0],text); //returns json
     obj = JSON.parse(json);
     obj['uuid'] = _uuid;
@@ -165,15 +199,12 @@ $(document).ready(function() {
 
     
     $('button.login-btn').click(function() {
-        //var user = $.trim($('#inputUser').val());
-        //user = user.toLowerCase();
         var user = 'chat';
         var pass = $.trim($('#inputPassword').val());
         $('#inputUser').val('');
         $('#inputPassword').val('');
 
         channel = user; //global
-        //key = pass; //global
         gen_keys(pass); //populate the global keys array
 
         init_messaging(function(success) {
